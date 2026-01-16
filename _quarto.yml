@@ -14,7 +14,7 @@ website:
             file: starter-analysis-exercise/starter-analysis-exercise.qmd
     right:
       - icon: github 
-        href: URL-TO-THIS-REPOSITORY-HERE        
+        href: https://github.com/ayllae/AyllaErmland-portfolio.git        
 format:
   html:
     theme: cosmo

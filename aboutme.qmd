@@ -1,7 +1,25 @@
 ---
-title: "About me"
+title: "About Me"
 ---
 
-Add some text and a figure describing myself.
+I am a fourth-year PhD student in Cellular Biology at the University of Georgia, working in the Tarleton Lab. My research focuses on antigenic variation and DNA recombination in *Trypanosoma cruzi*, the protozoan parasite that causes Chagas disease. I am particularly interested in understanding how rapidly and extensively antigenic diversity is generated and maintained in parasite populations during infection within the host.
 
-For details, see the instructions. 
+My training bridges wet-lab molecular parasitology and bioinformatics. Over the course of my PhD, I have integrated computational analyses into my research while working with Nanopore sequencing and genomics. As part of this interdisciplinary focus, I am also pursuing a Graduate Certificate in Bioinformatics, for which BIOS8060E is a required course.
+
+![](profile.jpeg)
+
+## Experience in Programming and Statistics
+
+I have experience working with Linux and Python, and I have completed several bioinformatics-focused courses through the IOB department, including *Python Programming*, *Genome Analysis and Programming*, and *Data Structures for Bioinformatics*. I routinely run genomics analyses on Sapelo2 and am comfortable using tools such as **pandas**, **matplotlib**, **ggplot2**, and applying basic statistical tests.
+
+Through this course, I hope to strengthen my theoretical understanding of statistical modeling and improve how I structure, analyze, and communicate results.
+
+## Interesting Data Analysis Material
+
+One visualization resource I particularly enjoy is the *Color Palette Finder for R*, an interactive tool that helps explore and select color palettes for R graphics. It’s especially useful for making plots both clear and visually beautiful! https://r-graph-gallery.com/color-palette-finder
+
+## A Bit More About Me
+
+I am originally from Brazil and moved to the United States to pursue my PhD. I am deeply interested in neglected diseases and in developing research approaches that can help address their health problems. Outside the lab, I love doing yoga and am completely obsessed with my cats 🐈🐈.
+
+![](cats.jpeg)

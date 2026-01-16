@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About me – YOURNAME Data Analysis Portfolio</title>
+<title>About Me – YOURNAME Data Analysis Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,15 +32,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="./URL-TO-THIS-REPOSITORY-HERE"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ayllae/AyllaErmland-portfolio.git"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -129,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About me</h1>
+<h1 class="title">About Me</h1>
 </div>
 
 
@@ -146,10 +145,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Add some text and a figure describing myself.</p>
-<p>For details, see the instructions.</p>
+<p>I am a fourth-year PhD student in Cellular Biology at the University of Georgia, working in the Tarleton Lab. My research focuses on antigenic variation and DNA recombination in <em>Trypanosoma cruzi</em>, the protozoan parasite that causes Chagas disease. I am particularly interested in understanding how rapidly and extensively antigenic diversity is generated and maintained in parasite populations during infection within the host.</p>
+<p>My training bridges wet-lab molecular parasitology and bioinformatics. Over the course of my PhD, I have integrated computational analyses into my research while working with Nanopore sequencing and genomics. As part of this interdisciplinary focus, I am also pursuing a Graduate Certificate in Bioinformatics, for which BIOS8060E is a required course.</p>
+<p><img src="profile.jpeg" class="img-fluid"></p>
+<section id="experience-in-programming-and-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="experience-in-programming-and-statistics">Experience in Programming and Statistics</h2>
+<p>I have experience working with Linux and Python, and I have completed several bioinformatics-focused courses through the IOB department, including <em>Python Programming</em>, <em>Genome Analysis and Programming</em>, and <em>Data Structures for Bioinformatics</em>. I routinely run genomics analyses on Sapelo2 and am comfortable using tools such as <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>ggplot2</strong>, and applying basic statistical tests.</p>
+<p>Through this course, I hope to strengthen my theoretical understanding of statistical modeling and improve how I structure, analyze, and communicate results.</p>
+</section>
+<section id="interesting-data-analysis-material" class="level2">
+<h2 class="anchored" data-anchor-id="interesting-data-analysis-material">Interesting Data Analysis Material</h2>
+<p>One visualization resource I particularly enjoy is the <em>Color Palette Finder for R</em>, an interactive tool that helps explore and select color palettes for R graphics. It’s especially useful for making plots both clear and visually beautiful! https://r-graph-gallery.com/color-palette-finder</p>
+</section>
+<section id="a-bit-more-about-me" class="level2">
+<h2 class="anchored" data-anchor-id="a-bit-more-about-me">A Bit More About Me</h2>
+<p>I am originally from Brazil and moved to the United States to pursue my PhD. I am deeply interested in neglected diseases and in developing research approaches that can help address their health problems. Outside the lab, I love doing yoga and am completely obsessed with my cats 🐈🐈.</p>
+<p><img src="cats.jpeg" class="img-fluid"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -203,14 +217,13 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
