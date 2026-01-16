@@ -4,13 +4,13 @@ title: "About Me"
 
 I am a fourth-year PhD student in Cellular Biology at the University of Georgia, working in the Tarleton Lab. My research focuses on antigenic variation and DNA recombination in *Trypanosoma cruzi*, the protozoan parasite that causes Chagas disease. I am particularly interested in understanding how rapidly and extensively antigenic diversity is generated and maintained in parasite populations during infection within the host.
 
-My training bridges wet-lab molecular parasitology and bioinformatics. Over the course of my PhD, I have integrated computational analyses into my research while working with Nanopore sequencing and genomics. As part of this interdisciplinary focus, I am also pursuing a Graduate Certificate in Bioinformatics, for which BIOS8060E is a required course.
+My training bridges wet lab molecular parasitology and bioinformatics. Over the course of my PhD, I have integrated computational analyses into my research while working with Nanopore sequencing and genomics. As part of this interdisciplinary focus, I am also pursuing a Graduate Certificate in Bioinformatics, for which BIOS8060E is a required course.
 
 ![](profile.jpeg)
 
 ## Experience in Programming and Statistics
 
-I have experience working with Linux and Python, and I have completed several bioinformatics-focused courses through the IOB department, including *Python Programming*, *Genome Analysis and Programming*, and *Data Structures for Bioinformatics*. I routinely run genomics analyses on Sapelo2 and am comfortable using tools such as **pandas**, **matplotlib**, **ggplot2**, and applying basic statistical tests.
+I have experience working with Linux and Python, and I have completed several bioinformatics focused courses through the IOB department, including *Python Programming*, *Genome Analysis and Programming*, and *Data Structures for Bioinformatics*. I routinely run genomics analyses on Sapelo2 and am comfortable using tools such as **pandas**, **matplotlib**, **ggplot2**, and applying basic statistical tests.
 
 Through this course, I hope to strengthen my theoretical understanding of statistical modeling and improve how I structure, analyze, and communicate results.
 
