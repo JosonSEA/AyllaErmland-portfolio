@@ -112,12 +112,12 @@ ggplot(africadata_year2000, aes(x = infant_mortality, y = life_expectancy)) +
 
 ```{r}
 
-#Now we will apply models to our analysis of year 2000 to see if they are significant correlations:
+# Now we will apply models to our analysis of year 2000 to see if they are significant correlations:
 
-#Model 1: Predict life expectancy using infant mortality
+# Model 1: Predict life expectancy using infant mortality
 fit1 <- lm(life_expectancy ~ infant_mortality, data = africadata_year2000)
 
-#Model 2: Predict life expectancy using population size
+# Model 2: Predict life expectancy using population size
 fit2 <- lm(life_expectancy ~ population, data = africadata_year2000)
 
 # Print model summaries to screen
