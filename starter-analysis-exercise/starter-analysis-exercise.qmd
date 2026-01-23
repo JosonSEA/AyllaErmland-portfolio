@@ -195,4 +195,4 @@ ggplot(recent_co2, aes(x = year, y = co2)) +
   theme_minimal()
 ```
 
-This visualization focuses on CO₂ levels from the year 2000 to the present. During this period, CO₂ concetrations continue to increase at a steady rate without any major decreases or fluctuations. This suggests that atmospheric CO₂ have consistently risen in more recent years 
+This visualization focuses on CO₂ levels from the year 2000 to the present. During this period, CO₂ concetrations continue to increase at a steady rate without any major decreases or fluctuations. This suggests that atmospheric CO₂ have consistently risen in more recent years.
