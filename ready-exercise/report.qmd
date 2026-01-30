@@ -1,0 +1,84 @@
+---
+title: "Report - Data Analysis Project"
+author: "Aylla von Ermland"
+format:
+  html:
+    embed-resources: true 
+    toc: false
+    number-sections: true
+    highlight-style: github
+bibliography: ../../assets/dataanalysis-references.bib
+csl: ../../assets/american-journal-of-epidemiology.csl
+---
+
+```{r, echo=FALSE, message=FALSE}
+# load a few R packages
+library(here)
+library(knitr)
+```
+
+**Authors**  
+
+* Aylla Ermland$^{1,2,*}$
+* Anissa Waller Del Valle$^{1,2 *}$
+
+**Author affiliations**  
+
+1. Department of Cellular Biology, University of Georgia, Athens, GA, USA.
+2. Center for Tropical and Emerging Global Diseases, University of Georgia, Athens, GA, USA.
+
+$*$ These authors contributed equally to this work.
+
+$\land$ Corresponding author: ayllae@uga.edu
+
+
+## General Background Information
+This analysis was performed as part of the READy Workflow Assesment. 
+
+# Methods 
+
+We first updated the code to load a new dataset, `exampledata2.xlsx`, which includes additional variables beyond Height, Weight, and Gender. These new variables include `Body_fat_percentage` (numeric) and `Exercise_type` (categorical), where Exercise Type denotes an individual's primary exercise routine such as "Cardio", "Strength", or "Mixed".
+
+The data were cleaned and processed using the script “processingfile-v1.qmd”. The cleaned data were saved as `processeddata2.rds`.
+
+Subsequently, we generated exploratory plots directed by Anissa Del Valle. A boxplot was created showing `Exercise_type` on the x-axis and `Height` on the y-axis. Additionally, a scatterplot was produced with `Weight` on the x-axis and `Body_fat_percentage` on the y-axis to examine potential relationships.
+
+For statistical modeling, Aylla Ermland performed the analysis using the `statistical-analysis.R` script located in `/code/analysis-code/`. We edited the script to fit a third linear model where `Height` is the outcome and both `Exercise_type` and `Body_fat_percentage` are predictors. The results of this model were saved to `resulttable3.rds` in the appropriate results folder.
+
+# Results
+
+Boxplot showing `Exercise_type` on the x-axis and `Height` on the y-axis: 
+
+```{r}
+#| label: fig-exercise-height
+#| fig-cap: "Boxplot showing the distribution of height across different exercise types."
+#| echo: FALSE
+knitr::include_graphics(here("ready-exercise", "height_by_exercise_type.png"))
+```
+
+Scatterplot was produced with `Weight` on the x-axis and `Body_fat_percentage`:
+
+```{r}
+#| label: fig-weight-bodyfat
+#| fig-cap: "Scatterplot illustrating the relationship between weight and body fat percentage."
+#| echo: FALSE
+knitr::include_graphics(here("ready-exercise", "weight_vs_bodyfatpercentage.png"))
+```
+
+The third linear model assessed the relationship between Height (dependent variable), Body Fat Percentage, and Exercise Type. The results of this model are summarized in Table 3:
+
+```{r}
+table_file3 = here("ready-exercise", "resulttable3.rds")
+resulttable3 <- readRDS(table_file3)
+print(resulttable3)
+```
+
+This table shows the estimated coefficients, standard errors, and significance levels for each predictor. The results indicate how body composition and type of physical activity are associated with height, after adjusting for their respective effects.
+
+# Discussion and conclusion:
+
+The boxplot of Height by Exercise_Type suggests that individuals engaging in “strength-only” exercises tend to be taller, whereas those participating in “mixed” exercise types exhibit a wider range of heights. However, statistical analysis is necessary to confirm these observations.
+
+The scatterplot does not indicate a potential positive correlation between Body_fat_percentage and Weight.
+
+In the statistical analysis, there was no statistically significant association between Height and either Body_fat_percentage or Exercise_type in this dataset. All predictors had high p-values (p > 0.05), suggesting that their estimated effects on Height are not statistically meaningful in this sample.
