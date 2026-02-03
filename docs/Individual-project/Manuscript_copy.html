@@ -231,8 +231,11 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Authors</strong><br>
-* Aylla von Ermland<span class="math inline">\(^{1,2,*}\)</span> <strong>Author affiliations</strong><br>
-1. Department of Cellular Biology, University of Georgia, Athens, GA, USA. 2. Center for Tropical and Emerging Global Diseases, Athens, GA, USA.</p>
+* Aylla von Ermland<span class="math inline">\(^{1,2,*}\)</span></p>
+<ol type="1">
+<li><p>Department of Cellular Biology, University of Georgia, Athens, GA, USA.</p></li>
+<li><p>Center for Tropical and Emerging Global Diseases, Athens, GA, USA.</p></li>
+</ol>
 <p>Corresponding author: ayllae@uga.edu</p>
 <div style="page-break-after: always;"></div>
 <section id="introduction" class="level1" data-number="1">
@@ -246,8 +249,14 @@ window.Quarto = {
 <section id="description-of-data-and-data-source" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Description of data and data source</h1>
 <p>The data consist of a table containing frequencies of amplicon sequence clusters (or variants) from 16 samples of parasite DNA obtained through amplicon sequencing (nanopore). There are five parasite samples from dogs and eleven samples from macaques, collected across multiple time points over several months for each animal (see below):</p>
-<p>N Animal_ID Time Type 1 H290 July_Year1 Macaque 2 H290 Feb_Year1 Macaque 3 H421 July_Year1 Macaque 4 H421 Dec_Year1 Macaque 5 14-159 Oct_Year1 Macaque 6 14-159 May_Year1 Macaque 7 15-039 June_Year1 Macaque 8 15-039 Nov_Year1 Macaque 9 15-039 May_Year1 Macaque 10 15-056 June_Year1 Macaque 11 15-056 Nov_Year1 Macaque 12 74FU1 08_23 Dog 13 74FU1 08_24 Dog 14 74DA4 10_23 Dog 15 74DA4 02_24 Dog 16 74DA4 11_25 Dog</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Sample_info.png" class="img-fluid figure-img"></p>
+<figcaption>Sample information</figcaption>
+</figure>
+</div>
 <p>Using blood DNA samples, I performed a PCR amplification of the Hyper Variable Region (HVR) of the genome (200–400 bp), which is located in an organelle called kinetoplast DNA (kDNA). This region consists of multiple copies within the genome. Sequenced HVR reads were classified into clusters using k-mer analysis through a custom Python pipeline. Each cluster represents a group or variant of this HVR. The resulting data are stored in the file cluster_relative_frequencies_per_sample.csv, which contains the relative frequencies of clusters for each sample.</p>
+<p>The csv file below represents each sample information, where each row is a sample, columns are named animal_id; month; year; animal_spp; and the Cluster 1; Cluster 2; ….Each value represents the relative frequency of that sequence cluster in that particular sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -273,17 +282,15 @@ Attaching package: 'dplyr'</code></pre>
 <pre><code>here() starts at /Users/ayllaermland/Downloads/BIOS8060E/AyllaErmland-portfolio</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the object by assigning the result to a variable</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cluster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"Individual-project"</span>, <span class="st">"cluster_relative_frequencies_per_sample.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cluster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"Individual-project"</span>, <span class="st">"cluster_relative_frequencies_per_sample2.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>New names:
-• `` -&gt; `...1`</code></pre>
+<pre><code>Rows: 18 Columns: 42</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 16 Columns: 39
-── Column specification ────────────────────────────────────────────────────────
+<pre><code>── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr  (1): ...1
-dbl (38): 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 24, ...
+chr  (3): animal_id, month, animal_spp
+dbl (39): year, cluster 1, cluster 2, cluster 3, cluster 4, cluster 5, clust...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -291,149 +298,179 @@ dbl (38): 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 24, ...
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 16
-Columns: 39
-$ ...1 &lt;chr&gt; "14159_May", "14159_Oct", "15039_June", "15039_May", "15039_Nov",…
-$ `1`  &lt;dbl&gt; 0.13548490, 0.08463779, 0.10771841, 0.12070782, 0.20857526, 0.143…
-$ `10` &lt;dbl&gt; 0.035788465, 0.037313433, 0.098388465, 0.058984622, 0.064091112, …
-$ `11` &lt;dbl&gt; 0.1479469564, 0.2901346924, 0.0025445293, 0.0023172530, 0.0109423…
-$ `12` &lt;dbl&gt; 0.029397667, 0.033127048, 0.055979644, 0.040867917, 0.035953551, …
-$ `13` &lt;dbl&gt; 0.0003195399, 0.0016381507, 0.0000000000, 0.0006319781, 0.0000000…
-$ `14` &lt;dbl&gt; 0.1073653938, 0.2156898435, 0.0022618038, 0.0023172530, 0.0051362…
-$ `15` &lt;dbl&gt; 0.0079884966, 0.0000000000, 0.0008481764, 0.0002106594, 0.0013398…
-$ `16` &lt;dbl&gt; 0.0012781595, 0.0005460502, 0.0000000000, 0.0002106594, 0.0000000…
-$ `17` &lt;dbl&gt; 0.0006390797, 0.0007280670, 0.0002827255, 0.0002106594, 0.0000000…
-$ `18` &lt;dbl&gt; 0.0000000000, 0.0001820167, 0.0407124682, 0.2218243101, 0.0600714…
-$ `19` &lt;dbl&gt; 0.0007988497, 0.0009100837, 0.0000000000, 0.0000000000, 0.0002233…
-$ `2`  &lt;dbl&gt; 0.012621825, 0.014743356, 0.026293469, 0.047187697, 0.019651630, …
-$ `20` &lt;dbl&gt; 0.0001597699, 0.0007280670, 0.0000000000, 0.0006319781, 0.0000000…
-$ `21` &lt;dbl&gt; 0.0000000000, 0.0000000000, 0.0000000000, 0.0006319781, 0.0000000…
-$ `22` &lt;dbl&gt; 0.0000000000, 0.0000000000, 0.0000000000, 0.0006319781, 0.0002233…
-$ `23` &lt;dbl&gt; 0.0097459658, 0.0100109210, 0.0155499010, 0.0092690120, 0.0198749…
-$ `24` &lt;dbl&gt; 0.0049528679, 0.0000000000, 0.0000000000, 0.0000000000, 0.0000000…
-$ `25` &lt;dbl&gt; 0.0006390797, 0.0009100837, 0.0000000000, 0.0002106594, 0.0000000…
-$ `26` &lt;dbl&gt; 0.0001597699, 0.0005460502, 0.0000000000, 0.0002106594, 0.0000000…
-$ `27` &lt;dbl&gt; 0.0000000000, 0.0001820167, 0.0248798417, 0.1409311144, 0.0332737…
-$ `28` &lt;dbl&gt; 0.0014379294, 0.0000000000, 0.0008481764, 0.0014746155, 0.0046895…
-$ `29` &lt;dbl&gt; 0.1008148266, 0.0238441937, 0.0002827255, 0.0002106594, 0.0000000…
-$ `3`  &lt;dbl&gt; 0.13037226, 0.07426283, 0.14645180, 0.09542869, 0.22353729, 0.126…
-$ `30` &lt;dbl&gt; 0.0009586196, 0.0003640335, 0.0706813684, 0.0004213187, 0.0855292…
-$ `31` &lt;dbl&gt; 0.0814826650, 0.0158354569, 0.0000000000, 0.0002106594, 0.0002233…
-$ `32` &lt;dbl&gt; 0.0003195399, 0.0005460502, 0.0000000000, 0.0000000000, 0.0000000…
-$ `33` &lt;dbl&gt; 0.0001597699, 0.0001820167, 0.0000000000, 0.0000000000, 0.0000000…
-$ `34` &lt;dbl&gt; 0.0097459658, 0.0180196578, 0.0000000000, 0.0000000000, 0.0000000…
-$ `35` &lt;dbl&gt; 0.000000000, 0.000000000, 0.000000000, 0.000000000, 0.000000000, …
-$ `36` &lt;dbl&gt; 0.0000000000, 0.0000000000, 0.0000000000, 0.0000000000, 0.0000000…
-$ `37` &lt;dbl&gt; 0.0000000000, 0.0000000000, 0.0000000000, 0.0000000000, 0.0000000…
-$ `38` &lt;dbl&gt; 0.0000000000, 0.0001820167, 0.0000000000, 0.0000000000, 0.0000000…
-$ `4`  &lt;dbl&gt; 0.08691484, 0.05496906, 0.04721515, 0.06446177, 0.09155873, 0.083…
-$ `5`  &lt;dbl&gt; 0.0019172392, 0.0021842009, 0.0002827255, 0.0004213187, 0.0002233…
-$ `6`  &lt;dbl&gt; 0.047771209, 0.056971241, 0.187164264, 0.097956604, 0.068110764, …
-$ `7`  &lt;dbl&gt; 0.040262023, 0.055515107, 0.171048912, 0.090794186, 0.066547566, …
-$ `8`  &lt;dbl&gt; 0.0012781595, 0.0038223517, 0.0000000000, 0.0006319781, 0.0002233…
-$ `9`  &lt;dbl&gt; 0.0012781595, 0.0012741172, 0.0005654509, 0.0000000000, 0.0000000…</code></pre>
+<pre><code>Rows: 18
+Columns: 42
+$ animal_id    &lt;chr&gt; NA, "14159", "14159", "15039", "15039", "15039", "15056",…
+$ month        &lt;chr&gt; NA, "May", "Oct", "June", "May", "Nov", "June", "Nov", "F…
+$ year         &lt;dbl&gt; NA, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2024, 2025,…
+$ animal_spp   &lt;chr&gt; NA, "macaque", "macaque", "macaque", "macaque", "macaque"…
+$ `cluster 1`  &lt;dbl&gt; 1.00000000, 0.13548490, 0.08463779, 0.10771841, 0.1207078…
+$ `cluster 2`  &lt;dbl&gt; 10.000000000, 0.035788465, 0.037313433, 0.098388465, 0.05…
+$ `cluster 3`  &lt;dbl&gt; 11.000000000, 0.147946956, 0.290134692, 0.002544529, 0.00…
+$ `cluster 4`  &lt;dbl&gt; 12.000000000, 0.029397667, 0.033127048, 0.055979644, 0.04…
+$ `cluster 5`  &lt;dbl&gt; 13.000000000, 0.000319540, 0.001638151, 0.000000000, 0.00…
+$ `cluster 6`  &lt;dbl&gt; 14.000000000, 0.107365394, 0.215689843, 0.002261804, 0.00…
+$ `cluster 7`  &lt;dbl&gt; 15.000000000, 0.007988497, 0.000000000, 0.000848176, 0.00…
+$ `cluster 8`  &lt;dbl&gt; 16.000000000, 0.001278159, 0.000546050, 0.000000000, 0.00…
+$ `cluster 9`  &lt;dbl&gt; 17.000000000, 0.000639080, 0.000728067, 0.000282725, 0.00…
+$ `cluster 10` &lt;dbl&gt; 18.000000000, 0.000000000, 0.000182017, 0.040712468, 0.22…
+$ `cluster 11` &lt;dbl&gt; 19.000000000, 0.000798850, 0.000910084, 0.000000000, 0.00…
+$ `cluster 12` &lt;dbl&gt; 2.000000000, 0.012621825, 0.014743356, 0.026293469, 0.047…
+$ `cluster 13` &lt;dbl&gt; 20.000000000, 0.000159770, 0.000728067, 0.000000000, 0.00…
+$ `cluster 14` &lt;dbl&gt; 21.000000000, 0.000000000, 0.000000000, 0.000000000, 0.00…
+$ `cluster 15` &lt;dbl&gt; 22.000000000, 0.000000000, 0.000000000, 0.000000000, 0.00…
+$ `cluster 16` &lt;dbl&gt; 23.000000000, 0.009745966, 0.010010921, 0.015549901, 0.00…
+$ `cluster 17` &lt;dbl&gt; 24.000000000, 0.004952868, 0.000000000, 0.000000000, 0.00…
+$ `cluster 18` &lt;dbl&gt; 25.000000000, 0.000639080, 0.000910084, 0.000000000, 0.00…
+$ `cluster 19` &lt;dbl&gt; 26.000000000, 0.000159770, 0.000546050, 0.000000000, 0.00…
+$ `cluster 20` &lt;dbl&gt; 27.000000000, 0.000000000, 0.000182017, 0.024879842, 0.14…
+$ `cluster 21` &lt;dbl&gt; 28.000000000, 0.001437929, 0.000000000, 0.000848176, 0.00…
+$ `cluster 22` &lt;dbl&gt; 29.000000000, 0.100814827, 0.023844194, 0.000282725, 0.00…
+$ `cluster 23` &lt;dbl&gt; 3.00000000, 0.13037226, 0.07426283, 0.14645180, 0.0954286…
+$ `cluster 24` &lt;dbl&gt; 30.000000000, 0.000958620, 0.000364033, 0.070681368, 0.00…
+$ `cluster 25` &lt;dbl&gt; 31.000000000, 0.081482665, 0.015835457, 0.000000000, 0.00…
+$ `cluster 26` &lt;dbl&gt; 32.000000000, 0.000319540, 0.000546050, 0.000000000, 0.00…
+$ `cluster 27` &lt;dbl&gt; 33.000000000, 0.000159770, 0.000182017, 0.000000000, 0.00…
+$ `cluster 28` &lt;dbl&gt; 34.000000000, 0.009745966, 0.018019658, 0.000000000, 0.00…
+$ `cluster 29` &lt;dbl&gt; 35.000000000, 0.000000000, 0.000000000, 0.000000000, 0.00…
+$ `cluster 30` &lt;dbl&gt; 36.000000000, 0.000000000, 0.000000000, 0.000000000, 0.00…
+$ `cluster 31` &lt;dbl&gt; 37.000000000, 0.000000000, 0.000000000, 0.000000000, 0.00…
+$ `cluster 32` &lt;dbl&gt; 38.000000000, 0.000000000, 0.000182017, 0.000000000, 0.00…
+$ `cluster 33` &lt;dbl&gt; 4.00000000, 0.08691484, 0.05496906, 0.04721515, 0.0644617…
+$ `cluster 34` &lt;dbl&gt; 5.000000000, 0.001917239, 0.002184201, 0.000282725, 0.000…
+$ `cluster 35` &lt;dbl&gt; 6.000000000, 0.047771209, 0.056971241, 0.187164264, 0.097…
+$ `cluster 36` &lt;dbl&gt; 7.000000000, 0.040262023, 0.055515107, 0.171048912, 0.090…
+$ `cluster 37` &lt;dbl&gt; 8.000000000, 0.001278159, 0.003822352, 0.000000000, 0.000…
+$ `cluster 38` &lt;dbl&gt; 9.000000000, 0.001278159, 0.001274117, 0.000565451, 0.000…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 39
-  ...1         `1`   `10`    `11`   `12`    `13`    `14`    `15`    `16`    `17`
-  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 14159_May 0.135  0.0358 1.48e-1 0.0294 3.20e-4 0.107   7.99e-3 1.28e-3 6.39e-4
-2 14159_Oct 0.0846 0.0373 2.90e-1 0.0331 1.64e-3 0.216   0       5.46e-4 7.28e-4
-3 15039_Ju… 0.108  0.0984 2.54e-3 0.0560 0       0.00226 8.48e-4 0       2.83e-4
-4 15039_May 0.121  0.0590 2.32e-3 0.0409 6.32e-4 0.00232 2.11e-4 2.11e-4 2.11e-4
-5 15039_Nov 0.209  0.0641 1.09e-2 0.0360 0       0.00514 1.34e-3 0       0      
-6 15056_Ju… 0.144  0.0604 5.72e-4 0.0414 3.05e-3 0       9.53e-4 1.53e-3 3.62e-3
-# ℹ 29 more variables: `18` &lt;dbl&gt;, `19` &lt;dbl&gt;, `2` &lt;dbl&gt;, `20` &lt;dbl&gt;,
-#   `21` &lt;dbl&gt;, `22` &lt;dbl&gt;, `23` &lt;dbl&gt;, `24` &lt;dbl&gt;, `25` &lt;dbl&gt;, `26` &lt;dbl&gt;,
-#   `27` &lt;dbl&gt;, `28` &lt;dbl&gt;, `29` &lt;dbl&gt;, `3` &lt;dbl&gt;, `30` &lt;dbl&gt;, `31` &lt;dbl&gt;,
-#   `32` &lt;dbl&gt;, `33` &lt;dbl&gt;, `34` &lt;dbl&gt;, `35` &lt;dbl&gt;, `36` &lt;dbl&gt;, `37` &lt;dbl&gt;,
-#   `38` &lt;dbl&gt;, `4` &lt;dbl&gt;, `5` &lt;dbl&gt;, `6` &lt;dbl&gt;, `7` &lt;dbl&gt;, `8` &lt;dbl&gt;,
-#   `9` &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 6 × 42
+  animal_id month  year animal_spp `cluster 1` `cluster 2` `cluster 3`
+  &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+1 &lt;NA&gt;      &lt;NA&gt;     NA &lt;NA&gt;            1          10         11      
+2 14159     May    2022 macaque         0.135       0.0358     0.148  
+3 14159     Oct    2022 macaque         0.0846      0.0373     0.290  
+4 15039     June   2022 macaque         0.108       0.0984     0.00254
+5 15039     May    2022 macaque         0.121       0.0590     0.00232
+6 15039     Nov    2022 macaque         0.209       0.0641     0.0109 
+# ℹ 35 more variables: `cluster 4` &lt;dbl&gt;, `cluster 5` &lt;dbl&gt;, `cluster 6` &lt;dbl&gt;,
+#   `cluster 7` &lt;dbl&gt;, `cluster 8` &lt;dbl&gt;, `cluster 9` &lt;dbl&gt;,
+#   `cluster 10` &lt;dbl&gt;, `cluster 11` &lt;dbl&gt;, `cluster 12` &lt;dbl&gt;,
+#   `cluster 13` &lt;dbl&gt;, `cluster 14` &lt;dbl&gt;, `cluster 15` &lt;dbl&gt;,
+#   `cluster 16` &lt;dbl&gt;, `cluster 17` &lt;dbl&gt;, `cluster 18` &lt;dbl&gt;,
+#   `cluster 19` &lt;dbl&gt;, `cluster 20` &lt;dbl&gt;, `cluster 21` &lt;dbl&gt;,
+#   `cluster 22` &lt;dbl&gt;, `cluster 23` &lt;dbl&gt;, `cluster 24` &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     ...1                 1                 10                 11           
- Length:16          Min.   :0.01861   Min.   :0.003515   Min.   :0.0000000  
- Class :character   1st Qu.:0.05776   1st Qu.:0.006577   1st Qu.:0.0005324  
- Mode  :character   Median :0.12810   Median :0.030952   Median :0.0022362  
-                    Mean   :0.12039   Mean   :0.034495   Mean   :0.0294917  
-                    3rd Qu.:0.15859   3rd Qu.:0.059348   3rd Qu.:0.0038540  
-                    Max.   :0.25936   Max.   :0.098388   Max.   :0.2901347  
-       12                 13                 14                  15          
- Min.   :0.003775   Min.   :0.000000   Min.   :0.0000000   Min.   :0.000000  
- 1st Qu.:0.019779   1st Qu.:0.000313   1st Qu.:0.0001949   1st Qu.:0.000158  
- Median :0.029883   Median :0.002597   Median :0.0008242   Median :0.002051  
- Mean   :0.029904   Mean   :0.024730   Mean   :0.0211901   Mean   :0.017318  
- 3rd Qu.:0.040994   3rd Qu.:0.055806   3rd Qu.:0.0022981   3rd Qu.:0.004936  
- Max.   :0.057314   Max.   :0.078358   Max.   :0.2156898   Max.   :0.127447  
-       16                  17                  18                  19          
- Min.   :0.0000000   Min.   :0.0000000   Min.   :0.000e+00   Min.   :0.000000  
- 1st Qu.:0.0004718   1st Qu.:0.0002647   1st Qu.:0.000e+00   1st Qu.:0.000655  
- Median :0.0054375   Median :0.0024542   Median :9.101e-05   Median :0.003562  
- Mean   :0.0180918   Mean   :0.0185877   Mean   :2.025e-02   Mean   :0.014957  
- 3rd Qu.:0.0331623   3rd Qu.:0.0434173   3rd Qu.:4.001e-04   3rd Qu.:0.028879  
- Max.   :0.0699649   Max.   :0.0591716   Max.   :2.218e-01   Max.   :0.054462  
-       2                 20                  21                  22           
- Min.   :0.00674   Min.   :0.0000000   Min.   :0.0000000   Min.   :0.000e+00  
- 1st Qu.:0.01207   1st Qu.:0.0004803   1st Qu.:0.0000000   1st Qu.:0.000e+00  
- Median :0.02361   Median :0.0017940   Median :0.0000000   Median :8.965e-05  
- Mean   :0.11982   Mean   :0.0144110   Mean   :0.0172042   Mean   :1.594e-02  
- 3rd Qu.:0.17859   3rd Qu.:0.0289908   3rd Qu.:0.0007679   3rd Qu.:4.681e-04  
- Max.   :0.67108   Max.   :0.0464342   Max.   :0.1644655   Max.   :1.376e-01  
-       23                 24                  25                 26           
- Min.   :0.000827   Min.   :0.0000000   Min.   :0.000000   Min.   :0.0000000  
- 1st Qu.:0.003565   1st Qu.:0.0000000   1st Qu.:0.000532   1st Qu.:0.0001979  
- Median :0.009878   Median :0.0003472   Median :0.008251   Median :0.0013216  
- Mean   :0.012020   Mean   :0.0099236   Mean   :0.011200   Mean   :0.0110807  
- 3rd Qu.:0.019480   3rd Qu.:0.0031085   3rd Qu.:0.014281   3rd Qu.:0.0175310  
- Max.   :0.028147   Max.   :0.0812973   Max.   :0.047579   Max.   :0.0440831  
-       27                  28                 29                  3          
- Min.   :0.0000000   Min.   :0.000000   Min.   :0.0000000   Min.   :0.02522  
- 1st Qu.:0.0000000   1st Qu.:0.001364   1st Qu.:0.0000000   1st Qu.:0.05691  
- Median :0.0000000   Median :0.004934   Median :0.0000000   Median :0.10485  
- Mean   :0.0124930   Mean   :0.007638   Mean   :0.0078532   Mean   :0.10643  
- 3rd Qu.:0.0002532   3rd Qu.:0.006088   3rd Qu.:0.0002287   3rd Qu.:0.13439  
- Max.   :0.1409311   Max.   :0.037869   Max.   :0.1008148   Max.   :0.22354  
-       30                  31                  32           
- Min.   :0.0000000   Min.   :0.0000000   Min.   :0.0000000  
- 1st Qu.:0.0000000   1st Qu.:0.0000000   1st Qu.:0.0002397  
- Median :0.0001713   Median :0.0000000   Median :0.0024565  
- Mean   :0.0099221   Mean   :0.0061251   Mean   :0.0063930  
- 3rd Qu.:0.0003784   3rd Qu.:0.0002138   3rd Qu.:0.0103846  
- Max.   :0.0855293   Max.   :0.0814827   Max.   :0.0227273  
-       33                  34                  35                 36           
- Min.   :0.0000000   Min.   :0.0000000   Min.   :0.000000   Min.   :0.0000000  
- 1st Qu.:0.0001765   1st Qu.:0.0000000   1st Qu.:0.000000   1st Qu.:0.0000000  
- Median :0.0016342   Median :0.0000000   Median :0.000000   Median :0.0005079  
- Mean   :0.0019346   Mean   :0.0017748   Mean   :0.001103   Mean   :0.0006387  
- 3rd Qu.:0.0034184   3rd Qu.:0.0000623   3rd Qu.:0.001779   3rd Qu.:0.0011430  
- Max.   :0.0052575   Max.   :0.0180197   Max.   :0.003837   Max.   :0.0018574  
-       37                 38                  4                 5           
- Min.   :0.000000   Min.   :0.000e+00   Min.   :0.01964   Min.   :0.000000  
- 1st Qu.:0.000000   1st Qu.:0.000e+00   1st Qu.:0.05373   1st Qu.:0.001543  
- Median :0.000000   Median :9.101e-05   Median :0.06221   Median :0.033964  
- Mean   :0.000627   Mean   :4.564e-04   Mean   :0.06249   Mean   :0.042744  
- 3rd Qu.:0.001079   3rd Qu.:4.483e-04   3rd Qu.:0.07607   3rd Qu.:0.072592  
- Max.   :0.002743   Max.   :2.124e-03   Max.   :0.09156   Max.   :0.116445  
-       6                  7                  8                  9           
- Min.   :0.005375   Min.   :0.003453   Min.   :0.000000   Min.   :0.000000  
- 1st Qu.:0.008887   1st Qu.:0.006446   1st Qu.:0.001117   1st Qu.:0.001097  
- Median :0.034454   Median :0.028864   Median :0.027557   Median :0.005813  
- Mean   :0.052397   Mean   :0.047830   Mean   :0.036385   Mean   :0.033759  
- 3rd Qu.:0.085391   3rd Qu.:0.071403   3rd Qu.:0.061245   3rd Qu.:0.065488  
- Max.   :0.187164   Max.   :0.171049   Max.   :0.105554   Max.   :0.106975  </code></pre>
+<pre><code>  animal_id            month                year       animal_spp       
+ Length:18          Length:18          Min.   :2022   Length:18         
+ Class :character   Class :character   1st Qu.:2022   Class :character  
+ Mode  :character   Mode  :character   Median :2022   Mode  :character  
+                                       Mean   :2023                     
+                                       3rd Qu.:2023                     
+                                       Max.   :2025                     
+                                       NA's   :2                        
+   cluster 1         cluster 2           cluster 3           cluster 4        
+ Min.   :0.01861   Min.   : 0.003515   Min.   : 0.000000   Min.   : 0.003775  
+ 1st Qu.:0.05777   1st Qu.: 0.006797   1st Qu.: 0.000572   1st Qu.: 0.022444  
+ Median :0.13548   Median : 0.032615   Median : 0.002317   Median : 0.030368  
+ Mean   :0.17213   Mean   : 0.620701   Mean   : 0.674816   Mean   : 0.734027  
+ 3rd Qu.:0.16402   3rd Qu.: 0.060439   3rd Qu.: 0.004583   3rd Qu.: 0.041373  
+ Max.   :1.00000   Max.   :10.000000   Max.   :11.000000   Max.   :12.000000  
+ NA's   :1         NA's   :1           NA's   :1           NA's   :1          
+   cluster 5           cluster 6           cluster 7        
+ Min.   : 0.000000   Min.   : 0.000000   Min.   : 0.000000  
+ 1st Qu.: 0.000320   1st Qu.: 0.000196   1st Qu.: 0.000211  
+ Median : 0.003051   Median : 0.001290   Median : 0.002761  
+ Mean   : 0.787982   Mean   : 0.843473   Mean   : 0.898652  
+ 3rd Qu.: 0.057548   3rd Qu.: 0.002317   3rd Qu.: 0.007988  
+ Max.   :13.000000   Max.   :14.000000   Max.   :15.000000  
+ NA's   :1           NA's   :1           NA's   :1          
+   cluster 8           cluster 9           cluster 10       
+ Min.   : 0.000000   Min.   : 0.000000   Min.   : 0.000000  
+ 1st Qu.: 0.000546   1st Qu.: 0.000283   1st Qu.: 0.000000  
+ Median : 0.009303   Median : 0.003622   Median : 0.000182  
+ Mean   : 0.958204   Mean   : 1.017494   Mean   : 1.077885  
+ 3rd Qu.: 0.036254   3rd Qu.: 0.043678   3rd Qu.: 0.000425  
+ Max.   :16.000000   Max.   :17.000000   Max.   :18.000000  
+ NA's   :1           NA's   :1           NA's   :1          
+   cluster 11          cluster 12        cluster 13          cluster 14       
+ Min.   : 0.000000   Min.   :0.00674   Min.   : 0.000000   Min.   : 0.000000  
+ 1st Qu.: 0.000799   1st Qu.:0.01262   1st Qu.: 0.000587   1st Qu.: 0.000000  
+ Median : 0.005789   Median :0.02629   Median : 0.002860   Median : 0.000000  
+ Mean   : 1.131724   Mean   :0.23042   Mean   : 1.190034   Mean   : 1.251486  
+ 3rd Qu.: 0.029114   3rd Qu.:0.18479   3rd Qu.: 0.031843   3rd Qu.: 0.001176  
+ Max.   :19.000000   Max.   :2.00000   Max.   :20.000000   Max.   :21.000000  
+ NA's   :1           NA's   :1         NA's   :1           NA's   :1          
+   cluster 15          cluster 16          cluster 17       
+ Min.   : 0.000000   Min.   : 0.000827   Min.   : 0.000000  
+ 1st Qu.: 0.000000   1st Qu.: 0.004036   1st Qu.: 0.000000  
+ Median : 0.000179   Median : 0.010011   Median : 0.000425  
+ Mean   : 1.309116   Mean   : 1.364255   Mean   : 1.421105  
+ 3rd Qu.: 0.000632   3rd Qu.: 0.019875   3rd Qu.: 0.004953  
+ Max.   :22.000000   Max.   :23.000000   Max.   :24.000000  
+ NA's   :1           NA's   :1           NA's   :1          
+   cluster 18          cluster 19          cluster 20         cluster 21       
+ Min.   : 0.000000   Min.   : 0.000000   Min.   :0.00e+00   Min.   : 0.000000  
+ 1st Qu.: 0.000639   1st Qu.: 0.000211   1st Qu.:0.00e+00   1st Qu.: 0.001438  
+ Median : 0.010337   Median : 0.002097   Median :0.00e+00   Median : 0.005179  
+ Mean   : 1.481129   Mean   : 1.539841   Mean   :1.60e+00   Mean   : 1.654248  
+ 3rd Qu.: 0.014559   3rd Qu.: 0.026089   3rd Qu.:4.25e-04   3rd Qu.: 0.006661  
+ Max.   :25.000000   Max.   :26.000000   Max.   :2.70e+01   Max.   :28.000000  
+ NA's   :1           NA's   :1           NA's   :1          NA's   :1          
+   cluster 22          cluster 23        cluster 24          cluster 25       
+ Min.   : 0.000000   Min.   :0.02522   Min.   : 0.000000   Min.   : 0.000000  
+ 1st Qu.: 0.000000   1st Qu.:0.05714   1st Qu.: 0.000000   1st Qu.: 0.000000  
+ Median : 0.000000   Median :0.10853   Median : 0.000196   Median : 0.000000  
+ Mean   : 1.713274   Mean   :0.27664   Mean   : 1.774044   Mean   : 1.829294  
+ 3rd Qu.: 0.000283   3rd Qu.:0.14645   3rd Qu.: 0.000421   3rd Qu.: 0.000223  
+ Max.   :29.000000   Max.   :3.00000   Max.   :30.000000   Max.   :31.000000  
+ NA's   :1           NA's   :1         NA's   :1           NA's   :1          
+   cluster 26         cluster 27         cluster 28         cluster 29      
+ Min.   : 0.00000   Min.   : 0.00000   Min.   : 0.00000   Min.   : 0.00000  
+ 1st Qu.: 0.00032   1st Qu.: 0.00018   1st Qu.: 0.00000   1st Qu.: 0.00000  
+ Median : 0.00434   Median : 0.00165   Median : 0.00000   Median : 0.00000  
+ Mean   : 1.88837   Mean   : 1.94300   Mean   : 2.00167   Mean   : 2.05986  
+ 3rd Qu.: 0.01335   3rd Qu.: 0.00345   3rd Qu.: 0.00025   3rd Qu.: 0.00216  
+ Max.   :32.00000   Max.   :33.00000   Max.   :34.00000   Max.   :35.00000  
+ NA's   :1          NA's   :1          NA's   :1          NA's   :1         
+   cluster 30         cluster 31         cluster 32         cluster 33     
+ Min.   : 0.00000   Min.   : 0.00000   Min.   : 0.00000   Min.   :0.01964  
+ 1st Qu.: 0.00000   1st Qu.: 0.00000   1st Qu.: 0.00000   1st Qu.:0.05497  
+ Median : 0.00058   Median : 0.00000   Median : 0.00018   Median :0.06446  
+ Mean   : 2.11825   Mean   : 2.17706   Mean   : 2.23572   Mean   :0.29411  
+ 3rd Qu.: 0.00126   3rd Qu.: 0.00121   3rd Qu.: 0.00055   3rd Qu.:0.07926  
+ Max.   :36.00000   Max.   :37.00000   Max.   :38.00000   Max.   :4.00000  
+ NA's   :1          NA's   :1          NA's   :1          NA's   :1        
+   cluster 34         cluster 35         cluster 36         cluster 37      
+ Min.   :0.000000   Min.   :0.005375   Min.   :0.003453   Min.   :0.000000  
+ 1st Qu.:0.001917   1st Qu.:0.009558   1st Qu.:0.006797   1st Qu.:0.001278  
+ Median :0.041051   Median :0.047771   Median :0.040262   Median :0.035680  
+ Mean   :0.334348   Mean   :0.402256   Mean   :0.456781   Mean   :0.504833  
+ 3rd Qu.:0.075828   3rd Qu.:0.091702   3rd Qu.:0.085971   3rd Qu.:0.064013  
+ Max.   :5.000000   Max.   :6.000000   Max.   :7.000000   Max.   :8.000000  
+ NA's   :1          NA's   :1          NA's   :1          NA's   :1         
+   cluster 38      
+ Min.   :0.000000  
+ 1st Qu.:0.001274  
+ Median :0.006482  
+ Mean   :0.561185  
+ 3rd Qu.:0.073087  
+ Max.   :9.000000  
+ NA's   :1         </code></pre>
 </div>
 </div>
 </section>
-<section id="questionshypotheses-to-be-addressed" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Questions/Hypotheses to be addressed</h1>
+<section id="hypotheses-to-be-addressed" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Hypotheses to be addressed</h1>
 <p>The main hypothesis addressed in this project is whether natural parasite reinfection occurs in the same host over time. In order to answer this question, I will compare the HVR cluster profile of parasites collected from host blood at different time points to determine whether parasite composition remains the same or differs across samples. If the cluster frequency profiles are the same/correlated, this suggests the parasite came from the same initial infection and if they present differences, may indicate reinfection.</p>
 <p>Additional questions can be explored using this dataset such as whether parasite composition differs between hosts, such as dogs versus macaques, suggesting host-related differences in parasite composition. Another question is whether samples collected in the same month are more closely related to each other, because of the kissing bug season. Overall, the correlation and relatedness among samples are examined to assess patterns associated with host type, time point, and sampling period.</p>
 <p>I expect to observe reinfection in at least 10% of the samples, based on treatment data showing that approximately 10% of treated animals experience a later relapse of the disease.</p>
 </section>
-<section id="methods---data-analysis-approach" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Methods - Data analysis approach</h1>
+<section id="methods-data-analysis-approach" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Methods: Data analysis approach</h1>
 <p>Initial exploratory analyses include plotting frequency bar plots for cluster composition across samples and to acess overall patterns. A correlation matrix will then be generated based on shared clusters between samples. This will allow testing whether samples from the same host at different time points are more closely related to each other than to samples from other hosts. Higher correlation with samples from other animals may indicate reinfection.</p>
 <p>Additional analyses include evaluating whether host type (dogs or macaques) is a predictive variable for parasite composition and testing whether samples collected during the same month are correlated across hosts. These analyses will help assess temporal, host-related, and potential geographic patterns in parasite composition.</p>
 
