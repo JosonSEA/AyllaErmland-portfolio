@@ -15,7 +15,7 @@ website:
           - text: "READy Exercise"
             file: ready-exercise/ready-exercise.html
           - text: "Individual Project"
-            file: docs/Individual-project/Manuscript_copy.html
+            file: docs/docs/Individual-project/Manuscript_copy.html
     right:
       - icon: github 
         href: https://github.com/ayllae/AyllaErmland-portfolio       
