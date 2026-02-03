@@ -3,7 +3,7 @@ title: "MADA Course - Pre-view of the Data Analysis Project"
 project: "Comparison of *Trypanosoma cruzi* parasite composition across hosts and time points"
 author: "Aylla von Ermland"
 format:
-  docx:
+  docx: html
     toc: false
     number-sections: true
     highlight-style: github
