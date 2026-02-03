@@ -8,7 +8,7 @@
 
 <meta name="author" content="Aylla von Ermland">
 
-<title>MADA Course - Pre-view of the Data Analysis Project – Aylla Ermland Data Analysis Portfolio</title>
+<title>Comparison of Trypanosoma cruzi parasite composition across hosts and time points – Aylla Ermland Data Analysis Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -172,7 +172,7 @@ window.Quarto = {
  <span class="dropdown-text">READy Exercise</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../docs/Individual-project/Manuscript_copy.qmd">
+    <a class="dropdown-item" href="../Individual-project/Manuscript_copy.html">
  <span class="dropdown-text">Individual Project</span></a>
   </li>  
     </ul>
@@ -202,7 +202,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MADA Course - Pre-view of the Data Analysis Project</h1>
+<h1 class="title">Comparison of <em>Trypanosoma cruzi</em> parasite composition across hosts and time points</h1>
 </div>
 
 
@@ -230,29 +230,24 @@ window.Quarto = {
 <pre><code>Warning: package 'knitr' was built under R version 4.4.3</code></pre>
 </div>
 </div>
-<p><strong>Authors</strong></p>
-<ul>
-<li>Aylla von Ermland<span class="math inline">\(^{1,2,*}\)</span></li>
-</ul>
-<p><strong>Author affiliations</strong></p>
-<ol type="1">
-<li>Department of Cellular Biology, University of Georgia, Athens, GA, USA.</li>
-<li>Center for Tropical and Emerging Global Diseases, Athens, GA, USA.</li>
-</ol>
-<p><span class="math inline">\(\land\)</span> Corresponding author: ayllae@uga.edu</p>
+<p><strong>Authors</strong><br>
+* Aylla von Ermland<span class="math inline">\(^{1,2,*}\)</span> <strong>Author affiliations</strong><br>
+1. Department of Cellular Biology, University of Georgia, Athens, GA, USA. 2. Center for Tropical and Emerging Global Diseases, Athens, GA, USA.</p>
+<p>Corresponding author: ayllae@uga.edu</p>
 <div style="page-break-after: always;"></div>
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 </section>
 <section id="general-background-information" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> General Background Information</h1>
-<p>I study the protozoan parasite Trypanosoma cruzi that causes Chagas disease. This disease is of interest because understanding parasite infection dynamics is important for improving treatment regimens and understanding how the disease affects humans. The goal of this project is to investigate if reinfection occurs among natural infected hosts in a relative small window of time (even when the hosts have been previously treated for the disease).</p>
-<p>The parasites analyzed in this study were isolated from naturally infected hosts, including dogs and macaques, in two different locations in Texas. Dogs were sampled from ranches, while macaques were housed in non-human primate research facilities with an indoor/outdoor configuration. We received samples from these locations in collaboration of Texas A&amp;M University. Because both the <em>T. cruzi</em> parasite and its vector (kissing bugs) are endemic among wild animals in Texas, these animals are naturally exposed and become infected frequently. All animals included in this study were previously treated with the standard drug regimen for Chagas disease (Benznidazole). A few months (or years) after treatment, these animals had a relapse in parasitemia and became sick again, but it is unclear whether this is due to treatment failure or reinfection over time, given continued exposure to the parasite and vector.</p>
+<p>I study the protozoan parasite <em>Trypanosoma cruzi</em> that causes Chagas disease. This disease is of interest because understanding parasite infection dynamics is important for improving treatment regimens and understanding how the disease affects humans. Our previous data shows that when naturally infected dogs are once drug-treated, the disease can relapse months or years after, but it is still unkown if this occurs because of treatment failure (which is most of the times assumed) or if it is because of a reinfection, which in this case a new treatment would be required. The goal of this project is to investigate if reinfection occurs among natural infected hosts in a relative small window of time. I have just received this data and have not analyzed it, so the MADA individual project be a great opportunity.</p>
+<p>The parasites analyzed in this study were isolated from blood of naturally infected hosts, including dogs and macaques, in two different locations in Texas, USA. Dogs were sampled from ranches, while macaques were housed in non-human primate research facilities with an indoor/outdoor configuration. We received samples from these locations in collaboration of Texas A&amp;M University. Because both the <em>T. cruzi</em> parasite and its vector (kissing bugs) are endemic among wild animals in Texas, these animals are naturally exposed and become infected frequently. All animals included in this study were previously treated with the standard drug regimen for Chagas disease (Benznidazole). A few months (or years) after treatment, these animals had a relapse in parasitemia and became sick again, but it is unclear whether this is due to treatment failure or reinfection over time given continued exposure to the parasite and vector.</p>
 </section>
 <section id="description-of-data-and-data-source" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Description of data and data source</h1>
-<p>The data consist of a table containing frequencies of amplicon sequence clusters (or variants) from 16 samples of parasite DNA obtained through amplicon sequencing (nanopore). There are five parasite samples from dogs and eleven samples from macaques, collected across multiple time points over several months for each animal.</p>
-<p>PCR amplification targeted the Hyper Variable Region (HVR) of the genome (200–400 bp), which is located in an organelle called kinetoplast DNA (kDNA). This region consists of multiple copies within the genome. Sequenced HVR reads were classified into clusters using k-mer analysis through a custom Python pipeline. The resulting data are stored in the file cluster_relative_frequencies_per_sample.csv, which contains the relative frequencies of clusters for each sample.</p>
+<p>The data consist of a table containing frequencies of amplicon sequence clusters (or variants) from 16 samples of parasite DNA obtained through amplicon sequencing (nanopore). There are five parasite samples from dogs and eleven samples from macaques, collected across multiple time points over several months for each animal (see below):</p>
+<p>N Animal_ID Time Type 1 H290 July_Year1 Macaque 2 H290 Feb_Year1 Macaque 3 H421 July_Year1 Macaque 4 H421 Dec_Year1 Macaque 5 14-159 Oct_Year1 Macaque 6 14-159 May_Year1 Macaque 7 15-039 June_Year1 Macaque 8 15-039 Nov_Year1 Macaque 9 15-039 May_Year1 Macaque 10 15-056 June_Year1 Macaque 11 15-056 Nov_Year1 Macaque 12 74FU1 08_23 Dog 13 74FU1 08_24 Dog 14 74DA4 10_23 Dog 15 74DA4 02_24 Dog 16 74DA4 11_25 Dog</p>
+<p>Using blood DNA samples, I performed a PCR amplification of the Hyper Variable Region (HVR) of the genome (200–400 bp), which is located in an organelle called kinetoplast DNA (kDNA). This region consists of multiple copies within the genome. Sequenced HVR reads were classified into clusters using k-mer analysis through a custom Python pipeline. Each cluster represents a group or variant of this HVR. The resulting data are stored in the file cluster_relative_frequencies_per_sample.csv, which contains the relative frequencies of clusters for each sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -273,10 +268,12 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the object by assigning the result to a variable</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>cluster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"Individual-project"</span>, <span class="st">"cluster_relative_frequencies_per_sample.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/ayllaermland/Downloads/BIOS8060E/AyllaErmland-portfolio</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the object by assigning the result to a variable</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cluster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"Individual-project"</span>, <span class="st">"cluster_relative_frequencies_per_sample.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...1`</code></pre>
@@ -291,8 +288,8 @@ dbl (38): 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 24, ...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the data</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 16
 Columns: 39
@@ -336,7 +333,7 @@ $ `7`  &lt;dbl&gt; 0.040262023, 0.055515107, 0.171048912, 0.090794186, 0.0665475
 $ `8`  &lt;dbl&gt; 0.0012781595, 0.0038223517, 0.0000000000, 0.0006319781, 0.0002233…
 $ `9`  &lt;dbl&gt; 0.0012781595, 0.0012741172, 0.0005654509, 0.0000000000, 0.0000000…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 39
   ...1         `1`   `10`    `11`   `12`    `13`    `14`    `15`    `16`    `17`
@@ -354,7 +351,7 @@ $ `9`  &lt;dbl&gt; 0.0012781595, 0.0012741172, 0.0005654509, 0.0000000000, 0.000
 #   `38` &lt;dbl&gt;, `4` &lt;dbl&gt;, `5` &lt;dbl&gt;, `6` &lt;dbl&gt;, `7` &lt;dbl&gt;, `8` &lt;dbl&gt;,
 #   `9` &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cluster_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ...1                 1                 10                 11           
  Length:16          Min.   :0.01861   Min.   :0.003515   Min.   :0.0000000  
@@ -431,9 +428,9 @@ $ `9`  &lt;dbl&gt; 0.0012781595, 0.0012741172, 0.0005654509, 0.0000000000, 0.000
 </section>
 <section id="questionshypotheses-to-be-addressed" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Questions/Hypotheses to be addressed</h1>
-<p>The main hypothesis addressed in this project is whether natural parasite reinfection occurs in the same host over time. In order to answer this question, I will compare the HVR sequene profile of parasites collected from host blood at different time points to determine whether parasite composition remains the same or differs across samples. If the cluster frequency profiles are the same/correlated, this suggests the parasite came from the same initial infection and if they present differences, may indicate reinfection.</p>
+<p>The main hypothesis addressed in this project is whether natural parasite reinfection occurs in the same host over time. In order to answer this question, I will compare the HVR cluster profile of parasites collected from host blood at different time points to determine whether parasite composition remains the same or differs across samples. If the cluster frequency profiles are the same/correlated, this suggests the parasite came from the same initial infection and if they present differences, may indicate reinfection.</p>
 <p>Additional questions can be explored using this dataset such as whether parasite composition differs between hosts, such as dogs versus macaques, suggesting host-related differences in parasite composition. Another question is whether samples collected in the same month are more closely related to each other, because of the kissing bug season. Overall, the correlation and relatedness among samples are examined to assess patterns associated with host type, time point, and sampling period.</p>
-<p>I expect to observe reinfection in at least 10% of the samples, based on treatment data showing that approximately 10% of treated animals experience an increase in parasitemia after some time.</p>
+<p>I expect to observe reinfection in at least 10% of the samples, based on treatment data showing that approximately 10% of treated animals experience a later relapse of the disease.</p>
 </section>
 <section id="methods---data-analysis-approach" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Methods - Data analysis approach</h1>
