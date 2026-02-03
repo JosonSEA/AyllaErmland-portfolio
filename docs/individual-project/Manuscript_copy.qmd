@@ -50,7 +50,7 @@ PCR amplification targeted the Hyper Variable Region (HVR) of the genome (200–
 ```{r}
 library(readr)
 library(dplyr)
-cluster_data <- readr::read_csv("products/manuscript/cluster_relative_frequencies_per_sample.csv")
+cluster_data <- readr::read_csv("individual-project/cluster_relative_frequencies_per_sample.csv")
 
 # Inspect
 glimpse(cluster_data)
