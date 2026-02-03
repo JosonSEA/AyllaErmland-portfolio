@@ -57,7 +57,6 @@ read_csv(here("Individual-project", "cluster_relative_frequencies_per_sample.csv
 # Inspect
 head(cluster_data)
 summary(cluster_data)
-glimpse(cluster_data)
 
 ```
 
