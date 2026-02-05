@@ -93,6 +93,11 @@ sleep_matrix <- sleep_binned %>%
   unnest_wider(sleep_vec, names_sep = "_") %>%
   rename_with(~labels, starts_with("sleep_vec"))
 
+# Create summary table: average sleep per 2-hour bin by Age_type
+sleep_summary <- sleep_matrix %>%
+  group_by(Age_type) %>%
+  summarise(across(all_of(labels), mean), .groups = "drop")
+
 ```
 
 #Inspect how the data looks like: 
