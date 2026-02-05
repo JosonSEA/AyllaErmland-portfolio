@@ -98,7 +98,6 @@ sleep_matrix <- sleep_binned %>%
 #Inspect how the data looks like: 
 
 ```{r}
-View(sleep_matrix)
 str(sleep_matrix)
 summary(sleep_matrix)
 
