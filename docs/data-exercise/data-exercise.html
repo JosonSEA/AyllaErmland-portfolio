@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Exercise: Analysis of age, gender effects on Night time Sleep using a synthetic dataset – Aylla Ermland Data Analysis Portfolio</title>
+<title>Data Exercise: Analysis of age, gender effects on night time sleep using a synthetic dataset – Aylla Ermland Data Analysis Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Exercise: Analysis of age, gender effects on Night time Sleep using a synthetic dataset</h1>
+<h1 class="title">Data Exercise: Analysis of age, gender effects on night time sleep using a synthetic dataset</h1>
 </div>
 
 
@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this exercise, I chose to work with a dataset that simulates human sleep behavior, focusing on the circadian rhythm—our natural sleep-wake cycle over 24 hours. The dataset includes information from different types of people, organized by age group (like children, adults, elders, and newborns) and gender (female and male), including also sleeping disorder (Regular, or Insomniac).</p>
+<p>In this exercise, I chose to work with a dataset that simulates human sleep behavior, focusing on the circadian rhythm, the natural sleep cycle over 24 hours. The dataset includes information from different types of people, organized by age group (like children, adults, elders, and newborns) and gender (female and male), including also sleeping disorder (Regular, or Insomniac).</p>
 <p>It records how much people sleep during what was defined by the nigh time hours (from 10 PM to 8 AM), and allows us to explore how age, gender, and whether someone is an insomniac or not affects the number of hours they sleep.</p>
 <p>First step was to generate a synthetic dataset.</p>
 <p>The code below simulates sleep patterns for different types of people. Each person was randomly assigned a group (“Normal” or “Insomniac”), a gender, and an age, which was then used to classify them into an age type (like “Child”, “Adult”, “Newborn”, or “Elder”).</p>
@@ -373,7 +373,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </div>
-<p>Box Plot of sleep time at night (from 22:00 to 08:00) and age_type (Adult, Child, Elder, Newborn)</p>
+<p>Box Plot of sleep time at night (from 22:00 to 08:00) and age_type (Adult, Child, Elder, Newborn):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Define nighttime bins</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>night_bins <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"22-00"</span>, <span class="st">"00-02"</span>, <span class="st">"02-04"</span>, <span class="st">"04-06"</span>, <span class="st">"06-08"</span>)</span>
@@ -397,7 +397,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </div>
-<p>Circular plot of sleep time in 24hrs day per category</p>
+<p>Circular plot of sleep time per category:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to long format for circular plot</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sleep_long <span class="ot">&lt;-</span> sleep_summary <span class="sc">%&gt;%</span></span>
@@ -416,7 +416,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">":00"</span>),</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">as.character</span>(bins)</span>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Circular Sleep Behavior by Age Type"</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Circular sleep behavior by age type"</span>,</span>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time of Day"</span>, <span class="at">y =</span> <span class="st">"Avg Hours Asleep (per 2h bin)"</span>) <span class="sc">+</span></span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set3"</span>) <span class="sc">+</span></span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
