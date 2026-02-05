@@ -1,8 +1,8 @@
 ---
-title: "Data Exercise: Analysis of age, gender effects on Night time Sleep using a synthetic dataset"
+title: "Data Exercise: Analysis of age, gender effects on night time sleep using a synthetic dataset"
 ---
 
-In this exercise, I chose to work with a dataset that simulates human sleep behavior, focusing on the circadian rhythm—our natural sleep-wake cycle over 24 hours. The dataset includes information from different types of people, organized by age group (like children, adults, elders, and newborns) and gender (female and male), including also sleeping disorder (Regular, or Insomniac).
+In this exercise, I chose to work with a dataset that simulates human sleep behavior, focusing on the circadian rhythm, the natural sleep cycle over 24 hours. The dataset includes information from different types of people, organized by age group (like children, adults, elders, and newborns) and gender (female and male), including also sleeping disorder (Regular, or Insomniac).
 
 It records how much people sleep during what was defined by the nigh time hours (from 10 PM to 8 AM), and allows us to explore how age, gender, and whether someone is an insomniac or not affects the number of hours they sleep.
 
@@ -119,7 +119,7 @@ ggplot(sleep_matrix, aes(x = group, y = age, fill = group)) +
   theme_minimal()
 ```
 
-Box Plot of sleep time at night (from 22:00 to 08:00) and age_type (Adult, Child, Elder, Newborn)
+Box Plot of sleep time at night (from 22:00 to 08:00) and age_type (Adult, Child, Elder, Newborn):
 
 ```{r}
 # Step 1: Define nighttime bins
@@ -138,7 +138,7 @@ ggplot(sleep_night, aes(x = Age_type, y = Night_sleep, fill = Age_type)) +
   theme_minimal()
 ```
 
-Circular plot of sleep time in 24hrs day per category 
+Circular plot of sleep time per category: 
 
 ```{r}
 # Convert to long format for circular plot
@@ -158,7 +158,7 @@ ggplot(sleep_long, aes(x = factor(bin_start), y = sleep_amount, fill = Age_type)
     labels = function(x) paste0(x, ":00"),
     breaks = as.character(bins)
   ) +
-  labs(title = "Circular Sleep Behavior by Age Type",
+  labs(title = "Circular sleep behavior by age type",
        x = "Time of Day", y = "Avg Hours Asleep (per 2h bin)") +
   scale_fill_brewer(palette = "Set3") +
   theme_minimal() +
