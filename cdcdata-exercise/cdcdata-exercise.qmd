@@ -1,12 +1,12 @@
 ---
-title: "CDC data exercise: Exploring flu vaccination coverage in U.S. adults (2020–21)"
+title: "Data Analysis Exercise: Exploring flu vaccination coverage in U.S. adults (2020–21)"
 ---
 
 This dataset comes from the CDC’s Cumulative Influenza Vaccination Coverage for Adults 18 years and older in the United States during the 2020-21 flu season. 
  
  You can find the original CDC dataset [here](https://data.cdc.gov/Vaccinations/Cumulative-Influenza-Vaccination-Coverage-Adults-1/kmap-fsfn/about_data). 
 
- The surveys were done using two large national panels: the IPSOS KnowledgePanel Omnibus and the NORC AmeriSpeak Omnibus.Each row in the dataset gives us information like when the data was collected, what age or race/ethnicity group it refers to, what percent of adults said they had gotten a flu shot (the point estimate), and the confidence interval (range of uncertainty). It also shows the sample size—how many people responded that week in that group.
+ The surveys were done using two large national panels: the IPSOS KnowledgePanel Omnibus and the NORC AmeriSpeak Omnibus.Each row in the dataset gives us information like when the data was collected, what age or race/ethnicity group it refers to, what percent of adults said they had gotten a flu shot (the point estimate), and the confidence interval (range of uncertainty). It also shows the sample size corresponding to how many people responded that week in that group.
 
  Load and process data: 
 
