@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CDC data exercise: Exploring flu vaccination coverage in U.S. adults (2020–21) – Aylla Ermland Data Analysis Portfolio</title>
+<title>Data Analysis Exercise: Exploring flu vaccination coverage in U.S. adults (2020–21) – Aylla Ermland Data Analysis Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CDC data exercise: Exploring flu vaccination coverage in U.S. adults (2020–21)</h1>
+<h1 class="title">Data Analysis Exercise: Exploring flu vaccination coverage in U.S. adults (2020–21)</h1>
 </div>
 
 
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This dataset comes from the CDC’s Cumulative Influenza Vaccination Coverage for Adults 18 years and older in the United States during the 2020-21 flu season.</p>
 <p>You can find the original CDC dataset <a href="https://data.cdc.gov/Vaccinations/Cumulative-Influenza-Vaccination-Coverage-Adults-1/kmap-fsfn/about_data">here</a>.</p>
-<p>The surveys were done using two large national panels: the IPSOS KnowledgePanel Omnibus and the NORC AmeriSpeak Omnibus.Each row in the dataset gives us information like when the data was collected, what age or race/ethnicity group it refers to, what percent of adults said they had gotten a flu shot (the point estimate), and the confidence interval (range of uncertainty). It also shows the sample size—how many people responded that week in that group.</p>
+<p>The surveys were done using two large national panels: the IPSOS KnowledgePanel Omnibus and the NORC AmeriSpeak Omnibus.Each row in the dataset gives us information like when the data was collected, what age or race/ethnicity group it refers to, what percent of adults said they had gotten a flu shot (the point estimate), and the confidence interval (range of uncertainty). It also shows the sample size corresponding to how many people responded that week in that group.</p>
 <p>Load and process data:</p>
 <p>Besides trimming the dataset to keep only the relevant columns, I also had to fix two issues. First, the Data_Collection_Midpoint_date column included unnecessary time information. Since all records for a given period already shared the same time, I formatted this column to display only the year and month (“2021 Jan”). Second, the Sample_Size column had a value labeled as “&lt;30”, which made the variable non-numeric and broke summary calculations. To fix this, I converted all “&lt;30” values to “30” so the column could be treated as a continuous numeric variable.</p>
 <div class="cell">
