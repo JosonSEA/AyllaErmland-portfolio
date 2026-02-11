@@ -1,0 +1,190 @@
+---
+title: "CDC data exercise: Exploring flu vaccination coverage in U.S. adults (2020–21)"
+---
+
+This dataset comes from the CDC’s Cumulative Influenza Vaccination Coverage for Adults 18 years and older in the United States during the 2020-21 flu season. 
+ 
+ Link: https://data.cdc.gov/Vaccinations/Cumulative-Influenza-Vaccination-Coverage-Adults-1/kmap-fsfn/about_data
+
+ The surveys were done using two large national panels: the IPSOS KnowledgePanel Omnibus and the NORC AmeriSpeak Omnibus.Each row in the dataset gives us information like when the data was collected, what age or race/ethnicity group it refers to, what percent of adults said they had gotten a flu shot (the point estimate), and the confidence interval (range of uncertainty). It also shows the sample size—how many people responded that week in that group.
+
+ Load and process data: 
+
+Besides trimming the dataset to keep only the relevant columns, I also had to fix two issues. First, the Data_Collection_Midpoint_date column included unnecessary time information. Since all records for a given period already shared the same time, I formatted this column to display only the year and month (“2021 Jan”). Second, the Sample_Size column had a value labeled as "<30", which made the variable non-numeric and broke summary calculations. To fix this, I converted all "<30" values to "30" so the column could be treated as a continuous numeric variable.
+
+```{r}
+library(tidyverse)
+library(readr)
+library(lubridate)
+
+#Load the data
+flu_data <- read_csv("cdcdata-exercise/Cumulative_Influenza_Vaccination_Coverage_20260210.csv")
+
+#Show all column names (optional)
+colnames(flu_data)
+
+#Select and clean columns
+flu_trimmed <- flu_data %>%
+  select(
+    Data_Collection_Midpoint_date,
+    Race_Ethnicity,
+    Age_Group,
+    Point_Estimate,
+    CI_Lower,
+    CI_Upper,
+    Sample_Size
+  ) %>%
+  mutate(
+    #Format the date: "2020 Dec 19 12:00:00 AM" → "2020 Dec"
+    Data_Collection_Midpoint_date = format(
+      parse_date_time(Data_Collection_Midpoint_date, orders = "Y b d I:M:S p"),
+      "%Y %b"
+    ),
+    
+    #Clean Sample_Size: remove "<" if present, then convert to numeric
+    Sample_Size = as.numeric(gsub("<", "", Sample_Size))
+  )
+
+#Save processed dataset
+write_csv(flu_trimmed, "cdcdata-exercise/flu_trimmed_dataset.csv")
+```
+
+Exploring the data:
+
+1st variable: 
+Estimating frequencies of Age_Group variable: 
+
+```{r}
+#Creating a summary table for Age_Group:
+#This counts how many rows belong to each unique age group
+age_summary <- flu_trimmed %>%
+  group_by(Age_Group) %>%          #Group the data by Age_Group
+  summarise(
+    count = n()                    #Count how many rows in each group
+  ) %>%
+  mutate(
+    percent = round(100 * count / sum(count), 1)  #Calculate the percentage each group represents (rounded to 1 decimal)
+  )
+
+#Print the summary table
+age_summary
+
+#Bar plot showing the percentage for each age group
+ggplot(age_summary, aes(x = reorder(Age_Group, -percent), y = percent)) +  
+  geom_col(fill = "lightblue") +  
+  labs(
+    title = "Distribution of Records by Age Group",  
+    x = "Age Group",                                 
+    y = "Percentage (%)"                            
+  )
+
+```
+
+Estimating frequencies for the 2nd variable race_ethnicity:
+
+```{r}
+#Creating a summary table for Race_Ethnicity:
+#calculates how many records fall under each racial/ethnic group and what % that is
+
+race_summary <- flu_trimmed %>%
+  group_by(Race_Ethnicity) %>%     
+  summarise(
+    count = n()                    #Count the number of records (rows) in each group
+  ) %>%
+  mutate(
+    percent = round(100 * count / sum(count), 1)  #Calculate what % of the total each group represents
+  )
+
+race_summary
+
+#Bar chart of the percentage of records by Race_Ethnicity
+ggplot(race_summary, aes(x = reorder(Race_Ethnicity, -percent), y = percent)) +
+  geom_col(fill = "lightpink") +  #Use a bar chart (column plot) with coral color
+  labs(
+    title = "Distribution of records by race/ethnicity",  
+    x = "Race/ethnicity",                                 
+    y = "Percentage (%)"                                  
+  ) +
+  coord_flip()  #Flip coordinates so bars are horizontal
+```
+
+3rd Variable: 
+
+For the continuous variable of vaccination coverage, I will plot a distribution and calculate the mean and SD of this dataset.
+
+```{r}
+
+# Summary statistics
+coverage_stats <- flu_trimmed %>%
+  summarise(
+    mean_coverage = mean(Point_Estimate, na.rm = TRUE),
+    sd_coverage = sd(Point_Estimate, na.rm = TRUE),
+  )
+
+coverage_stats
+
+# Histogram with normal curve (updated syntax)
+ggplot(flu_trimmed, aes(x = Point_Estimate)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 25, fill = "black", color = "black", na.rm = TRUE) +
+  #Add a normal distribution curve using the mean and SD from the data:
+  stat_function(
+    fun = dnorm,
+    args = list(
+      mean = mean(flu_trimmed$Point_Estimate, na.rm = TRUE),
+      sd = sd(flu_trimmed$Point_Estimate, na.rm = TRUE)
+    ),
+    color = "red"
+  ) +
+  labs(
+    title = "Vaccination coverage",
+    x = "Coverage (%)",
+    y = "Density"
+  )
+```
+
+
+4th variable: Data_Collection_Midpoint_date
+
+ ```{r}
+# Calculate percentage of records per month
+date_counts <- flu_trimmed %>%
+  group_by(Data_Collection_Midpoint_date) %>%
+  summarise(records = n()) %>%
+  mutate(percent = round(100 * records / sum(records), 1))
+
+head(date_counts)  # Preview table
+
+# Bar plot showing percentage of records per month
+ggplot(date_counts, aes(x = Data_Collection_Midpoint_date, y = percent)) +
+  geom_col(fill = "black") +
+  labs(
+    title = "Percentage of records by month and year",
+    x = "Month/Year",
+    y = "Percentage (%)"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ ```
+
+5th variable: Sample size
+
+```{r}
+#Calculate mean and standard deviation for Sample_Size
+sample_size_stats <- flu_trimmed %>%
+  summarise(
+    mean_sample_size = mean(Sample_Size, na.rm = TRUE),
+    sd_sample_size = sd(Sample_Size, na.rm = TRUE),
+  )
+
+sample_size_stats
+
+# Histogram to check distribution
+ggplot(flu_trimmed, aes(x = Sample_Size)) +
+  geom_histogram(bins = 25, fill = "black", color = "white") +
+  labs(
+    title = "Distribution of Sample Size",
+    x = "Sample Size",
+    y = "Count"
+  )
+
+```
