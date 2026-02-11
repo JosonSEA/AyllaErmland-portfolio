@@ -4,7 +4,7 @@ title: "CDC data exercise: Exploring flu vaccination coverage in U.S. adults (20
 
 This dataset comes from the CDC’s Cumulative Influenza Vaccination Coverage for Adults 18 years and older in the United States during the 2020-21 flu season. 
  
- Link: https://data.cdc.gov/Vaccinations/Cumulative-Influenza-Vaccination-Coverage-Adults-1/kmap-fsfn/about_data
+ You can find the original CDC dataset [here](https://data.cdc.gov/Vaccinations/Cumulative-Influenza-Vaccination-Coverage-Adults-1/kmap-fsfn/about_data). 
 
  The surveys were done using two large national panels: the IPSOS KnowledgePanel Omnibus and the NORC AmeriSpeak Omnibus.Each row in the dataset gives us information like when the data was collected, what age or race/ethnicity group it refers to, what percent of adults said they had gotten a flu shot (the point estimate), and the confidence interval (range of uncertainty). It also shows the sample size—how many people responded that week in that group.
 
@@ -16,9 +16,10 @@ Besides trimming the dataset to keep only the relevant columns, I also had to fi
 library(tidyverse)
 library(readr)
 library(lubridate)
+library(here)
 
 #Load the data
-flu_data <- read_csv("cdcdata-exercise/Cumulative_Influenza_Vaccination_Coverage_20260210.csv")
+flu_data <- read_csv(here("cdcdata-exercise", "Cumulative_Influenza_Vaccination_Coverage_20260210.csv"))
 
 #Show all column names (optional)
 colnames(flu_data)
@@ -46,7 +47,7 @@ flu_trimmed <- flu_data %>%
   )
 
 #Save processed dataset
-write_csv(flu_trimmed, "cdcdata-exercise/flu_trimmed_dataset.csv")
+write_csv(flu_trimmed, here("cdcdata-exercise", "flu_trimmed_dataset.csv"))
 ```
 
 Exploring the data:
