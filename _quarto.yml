@@ -18,6 +18,8 @@ website:
             file: Individual-project/Manuscript_copy.html
           - text: "Data Exercise"
             file: data-exercise/data-exercise.html
+          - text: "Data Analysis Exercise"
+            file: cdcdata-exercise/cdcdata-exercise.html
     right:
       - icon: github 
         href: https://github.com/ayllae/AyllaErmland-portfolio       

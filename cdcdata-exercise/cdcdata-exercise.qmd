@@ -119,7 +119,7 @@ For the continuous variable of vaccination coverage, I will plot a distribution 
 coverage_stats <- flu_trimmed %>%
   summarise(
     mean_coverage = mean(Point_Estimate, na.rm = TRUE),
-    sd_coverage = sd(Point_Estimate, na.rm = TRUE),
+    sd_coverage = sd(Point_Estimate, na.rm = TRUE)
   )
 
 coverage_stats
@@ -174,7 +174,7 @@ ggplot(date_counts, aes(x = Data_Collection_Midpoint_date, y = percent)) +
 sample_size_stats <- flu_trimmed %>%
   summarise(
     mean_sample_size = mean(Sample_Size, na.rm = TRUE),
-    sd_sample_size = sd(Sample_Size, na.rm = TRUE),
+    sd_sample_size = sd(Sample_Size, na.rm = TRUE)
   )
 
 sample_size_stats
